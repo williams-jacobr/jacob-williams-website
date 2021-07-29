@@ -1,0 +1,15 @@
+{
+  "name": "jacob-williams-website",
+  "version": "1.0.0",
+  "description": "A website about me",
+  "default": "index.html",
+  "scripts": {
+    "start": "parcel index.html"
+  },
+  "author": "Jacob Williams",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-image": "^2.0.0-nightly.2414",
+    "parcel": "^2.0.0-nightly.790"
+  }
+}
