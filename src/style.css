@@ -10,12 +10,13 @@ html {
 }
 
 body {
+  box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   height: 100%;
 
   display: grid;
   grid-template-columns: 15rem auto;
-  grid-template-rows: auto fit-content(3rem);
+  grid-template-rows: auto 4rem;
   grid-gap: 0.25rem;
 }
 
@@ -58,23 +59,27 @@ body {
 
 main {
   margin: 0.5rem;
-  border: 0.5rem black solid;
-  border-radius: 0.5rem;
+  border: 0.25rem black solid;
+  border-radius: 0.45rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* GENERAL ELEMENTS */
 #welcome {
+  position: relative;
   background: linear-gradient(transparent, black 90%),
     no-repeat center url(/header.jpg), black;
   background-size: cover;
   height: 100%;
-  min-width: 300px;
-  padding-top: 0;
+  width: 100%;
 }
 
 #welcome h1 {
   color: white;
-  position: relative;
+  position: absolute;
   top: 85%;
   left: 2%;
   font-size: 4rem;
@@ -106,6 +111,13 @@ footer {
   font-size: 1rem;
 }
 
+.my-places {
+  -webkit-transform: skew(0);
+  transform: skew(30deg) rotateZ(50deg) scale(2);
+}
+
+/*MOBILE VIEW*/
+
 @media (max-width: 775px) {
   footer {
     display: none;
@@ -113,6 +125,7 @@ footer {
 
   body {
     grid-template-columns: auto;
+    grid-template-rows: auto 2.5rem;
   }
 
   main {
@@ -133,7 +146,38 @@ footer {
 
   .nav__link:link,
   .nav__link:visited {
-    font-size: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .nav__cv:link,
+  .nav__cv:visited {
+    border: none;
+    width: auto;
+    background: none;
+    color: black;
+  }
+
+  .toggle-button {
+    width: 3rem;
+    background: black;
+    border: black 1px solid;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    padding-top: 0;
+    padding-bottom: 0;
+    vertical-align: middle;
+  }
+
+  .toggle-button:focus {
+    outline: none;
+  }
+
+  .toggle-button__bar {
+    width: 100%;
+    height: 0.2rem;
+    background: white;
+    display: block;
+    margin: 0.4rem 0;
   }
 
   #welcome h1 {

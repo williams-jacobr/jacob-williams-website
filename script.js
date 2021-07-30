@@ -29,29 +29,29 @@
 // overlay.addEventListener("click", renderCV);
 
 //BUG Need to install properly with npm
-let map;
+// let map;
 
-navigator.geolocation.getCurrentPosition(
-  function (position) {
-    const { latitude, longitude } = position.coords;
-    map = L.map("map").setView([latitude, longitude], 13);
+// navigator.geolocation.getCurrentPosition(
+//   function (position) {
+//     const { latitude, longitude } = position.coords;
+//     map = L.map("map").setView([latitude, longitude], 13);
 
-    console.log(map);
+//     console.log(map);
 
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    }).addTo(map);
+//     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+//       attribution:
+//         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+//     }).addTo(map);
 
-    L.marker([latitude, longitude])
-      .addTo(map)
-      .bindPopup("A pretty CSS3 popup.<br> Easily customizable.")
-      .openPopup();
-  },
-  function () {
-    alert("Unable to find location");
-  }
-);
+//     L.marker([latitude, longitude])
+//       .addTo(map)
+//       .bindPopup("A pretty CSS3 popup.<br> Easily customizable.")
+//       .openPopup();
+//   },
+//   function () {
+//     alert("Unable to find location");
+//   }
+// );
 
 // Slider
 
