@@ -44,7 +44,7 @@ body {
   font-size: 2rem;
   color: inherit;
   text-decoration: none;
-  transition: all 0.3s;
+  transition: all 1s ease-out;
 }
 
 .nav__cv:link,
@@ -61,6 +61,8 @@ main {
   margin: 0.5rem;
   border: 0.25rem black solid;
   border-radius: 0.45rem;
+  height: 95%;
+  max-height: 90vh;
 
   display: flex;
   justify-content: center;
@@ -83,6 +85,8 @@ main {
   top: 85%;
   left: 2%;
   font-size: 4rem;
+
+  animation: introduction 1s ease-out;
 }
 
 footer {
@@ -114,6 +118,43 @@ footer {
 .my-places {
   -webkit-transform: skew(0);
   transform: skew(30deg) rotateZ(50deg) scale(2);
+}
+
+/*BLOG VIEW*/
+.blog-container {
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+
+  display: grid;
+  grid-template-rows: 4rem auto;
+  grid-gap: 0.5rem;
+}
+
+.blog-container h1 {
+  grid-column: 1/-1;
+}
+
+.blog-posts {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  width: 100%;
+  height: 100%;
+  /* overflow: scroll; */
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.blog-post {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border: black 1px solid;
+  border-radius: 0.5rem;
+  width: 49%;
+  height: 50rem;
 }
 
 /*MOBILE VIEW*/
@@ -183,6 +224,27 @@ footer {
   #welcome h1 {
     top: 90%;
     font-size: 2rem;
+  }
+}
+
+@keyframes introduction {
+  0% {
+    transform: translateY(-1000%);
+  }
+  33% {
+    transform: translateY(100%);
+  }
+  50% {
+    transform: translateY(-100%);
+  }
+  66% {
+    transform: translateY(50%);
+  }
+  90% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0);
   }
 }
 
