@@ -36,12 +36,14 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .nav__link:link,
 .nav__link:visited {
   font-size: 2rem;
+  padding: 0 0.5rem;
+  margin: 0 1rem;
   color: inherit;
   text-decoration: none;
   transition: all 1s ease-out;
@@ -153,7 +155,7 @@ footer {
   margin: 0.5rem;
   border: black 1px solid;
   border-radius: 0.5rem;
-  width: 49%;
+  width: 45%;
   height: 50rem;
 }
 
@@ -183,11 +185,14 @@ footer {
 
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
   }
 
   .nav__link:link,
   .nav__link:visited {
     font-size: 1rem;
+    padding: 0;
+    margin: 0;
   }
 
   .nav__cv:link,

@@ -1,6 +1,6 @@
 import View from "./view.js";
 
-class myPlacesView extends View {
+class cvView extends View {
   _welcomeMessage = "Coming Soon!!";
 
   _generateMarkup() {
@@ -10,4 +10,4 @@ class myPlacesView extends View {
   }
 }
 
-export default new myPlacesView();
+export default new cvView();
