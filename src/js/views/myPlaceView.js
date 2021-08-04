@@ -1,6 +1,7 @@
 import View from "./view.js";
 
 class myPlacesView extends View {
+  _parentElement = document.querySelector("main");
   _welcomeMessage = "Coming Soon!!";
 
   _generateMarkup() {

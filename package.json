@@ -11,6 +11,8 @@
   "license": "ISC",
   "devDependencies": {
     "@parcel/transformer-image": "^2.0.0-nightly.2414",
-    "parcel": "^2.0.0-nightly.790"
+    "@parcel/transformer-sass": "^2.0.0-nightly.792",
+    "parcel": "^2.0.0-nightly.790",
+    "sass": "^1.37.5"
   }
 }

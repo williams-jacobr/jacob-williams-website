@@ -1,6 +1,7 @@
 import * as model from "./model.js";
 import myPlacesView from "./views/myPlaceView.js";
 import blogView from "./views/blogView.js";
+import blogPostView from "./views/blogPostView.js";
 import aboutMeView from "./views/aboutMeView.js";
 import gitHubView from "./views/gitHubView.js";
 import cvView from "./views/cvView.js";
@@ -9,7 +10,7 @@ const myPlacesButton = document.querySelector(`[href="#myplaces"]`);
 const blogButton = document.querySelector(`[href="#blog"]`);
 const aboutMeButton = document.querySelector(`[href="#aboutme"]`);
 const gitHubButton = document.querySelector(`[href="#github"]`);
-const cvButton = document.querySelector(`[href="#aboutme"]`);
+const cvButton = document.querySelector(`[href="#cv"]`);
 
 const controlPlacesView = function () {
   myPlacesView.render();
@@ -17,6 +18,12 @@ const controlPlacesView = function () {
 
 const controlBlogView = function () {
   blogView.render(model.state.blogs);
+};
+
+const controlBlogPostView = function () {
+  // ADD - Need a way to collect and then pass in which blog it is! - Use data attribute
+  console.log("CLICK");
+  blogPostView.render(model.state.blogs.blog_1);
 };
 
 const controlAboutMeView = function () {
@@ -33,6 +40,7 @@ const controlCvView = function () {
 
 myPlacesButton.addEventListener("click", controlPlacesView);
 blogButton.addEventListener("click", controlBlogView);
+blogPostView.addHandlerClick(controlBlogPostView);
 aboutMeButton.addEventListener("click", controlAboutMeView);
 gitHubButton.addEventListener("click", controlGitHubView);
-// cvButton.addEventListener("click", controlCvView);
+cvButton.addEventListener("click", controlCvView);

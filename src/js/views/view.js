@@ -1,5 +1,4 @@
 export default class View {
-  _parentElement = document.querySelector("main");
   _data;
 
   render(data = "", message = this._welcomeMessage) {

@@ -1,3 +1,5 @@
+import image from "../../imgs/blog/blog_1/img_1.webp";
+
 export const state = {
   blogs: {
     blog_1: {
@@ -18,8 +20,7 @@ export const state = {
         Aside from the gastronomical delights that will take up a sizeable part of your stay, there are of course some spots to do a bit of sightseeing. The general meandering in the centre is great on it's own, but there is also a viewing point that takes about 20 minutes to walk up to that has a spectacular panorama of the city. I also personally enjoyed getting lost in a park on top of the next hill along called Shevchenkivski Hai Park. There are some fun short walks to enjoy surrounded by a wood of pines and deciduous trees.
 
         In short, the reputation of the city preceeds itself, and if you haven't heard of Lviv before, it won't be long before you do so after setting foot in Ukraine. Many will describe this as a Ukrainian Krakow, a city which enjoys more fame than Lviv does, and I once met a polish man who described Lviv as Krakow before Poland joined the EU. I suggest going to this city without such expectations, the city is altogether something different to Krakow. But don't take my word for it, Lviv should absolutely be on your bucket list.`,
-      images:
-        "https://static.wixstatic.com/media/ad65ae_e101fe1260b74df5a449120052d2d6b2~mv2.jpg",
+      images: "{image}",
     },
   },
 };
