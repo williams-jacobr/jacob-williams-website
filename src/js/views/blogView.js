@@ -12,7 +12,7 @@ class BlogView extends View {
     <div class="blog-posts">
       <div class="blog-post">
         <img src="${image}">
-        <p>${this._data.blog_1.text.slice(0, 500)}...</p>
+        <p>${this._data.blog_1.text.join("</p><p>").slice(0, 500)}...</p>
       </div>
       <div class="blog-post"><p>BLOG POST</p></div>
       <div class="blog-post"><p>BLOG POST</p></div>

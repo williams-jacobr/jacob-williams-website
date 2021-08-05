@@ -22,7 +22,6 @@ const controlBlogView = function () {
 
 const controlBlogPostView = function () {
   // ADD - Need a way to collect and then pass in which blog it is! - Use data attribute
-  console.log("CLICK");
   blogPostView.render(model.state.blogs.blog_1);
 };
 
@@ -38,9 +37,15 @@ const controlCvView = function () {
   cvView.render();
 };
 
-myPlacesButton.addEventListener("click", controlPlacesView);
-blogButton.addEventListener("click", controlBlogView);
-blogPostView.addHandlerClick(controlBlogPostView);
-aboutMeButton.addEventListener("click", controlAboutMeView);
-gitHubButton.addEventListener("click", controlGitHubView);
-cvButton.addEventListener("click", controlCvView);
+const init = function () {
+  myPlacesButton.addEventListener("click", controlPlacesView);
+  blogButton.addEventListener("click", controlBlogView);
+  blogPostView.addHandlerClick(controlBlogPostView);
+  blogPostView.addHandlerCloseClick(controlBlogView);
+  aboutMeButton.addEventListener("click", controlAboutMeView);
+  gitHubButton.addEventListener("click", controlGitHubView);
+  cvButton.addEventListener("click", controlCvView);
+};
+
+init();
+aboutMeView.render();

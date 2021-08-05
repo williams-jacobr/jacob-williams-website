@@ -12,10 +12,21 @@ class BlogPostView extends View {
     });
   }
 
+  addHandlerCloseClick(handler) {
+    this._parentElement.addEventListener("click", function (e) {
+      const closeButton = e.target.closest(".blog-post-text__container--close");
+      if (!closeButton) return;
+      handler();
+    });
+  }
+
   _generateMarkup() {
+    console.log(this._data.text);
     return `
     <div class="blog-post-text__container">
-    <p class="blog-post-text">${this._data.text}</p>
+    <div class="blog-post-text__container--close">&times</div
+    <h1> Oblasts and Beyond </h1>
+    <p>${this._data.text.join("</p><p>")}</p>
     </div>
       `;
   }
