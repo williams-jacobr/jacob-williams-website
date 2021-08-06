@@ -29,6 +29,10 @@ body {
   height: 100%;
 }
 
+.extend-menu {
+  display: none;
+}
+
 .nav__links {
   height: 100%;
   padding: 25% 0;
@@ -301,13 +305,43 @@ footer {
     grid-row: 2/3;
   }
 
+  .extend-menu {
+    display: block;
+    position: fixed;
+    bottom: 5.5rem;
+    right: 1rem;
+    z-index: 1;
+
+    width: 10rem;
+
+    background: white;
+    border: black solid 0.1rem;
+  }
+
+  .extend-menu__links {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: black;
+  }
+
+  .extend-menu__item {
+    list-style: none;
+    margin: 0;
+  }
+
+  .extend-menu__link {
+    text-decoration: none;
+    color: black;
+  }
+
   .nav__links {
     height: initial;
     padding: initial;
     margin: 0;
 
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
   }
 
