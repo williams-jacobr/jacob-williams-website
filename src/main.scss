@@ -24,6 +24,9 @@ body {
 }
 
 /* NAV ITEMS */
+nav {
+  z-index: 2;
+}
 
 .nav {
   height: 100%;
@@ -71,6 +74,17 @@ body {
 
 .toggle-button {
   display: none;
+}
+
+.overlay {
+  // display:none;
+  top: 0rem;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: calc(100% - 6rem);
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 main {
@@ -160,32 +174,6 @@ main {
     padding: 2rem;
     border: black 0.5rem solid;
     width: 30%;
-  }
-}
-
-footer {
-  background-color: black;
-  padding: 1rem;
-  grid-column: 1/-1;
-}
-
-.footer__nav {
-  width: 75%;
-  list-style: none;
-  margin: auto;
-
-  @include display-flex();
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer__item {
-  padding: 0 1rem;
-
-  a {
-    text-decoration: none;
-    color: white;
-    font-size: 1rem;
   }
 }
 
@@ -285,6 +273,57 @@ footer {
   }
 }
 
+//FOOTER
+
+footer {
+  background-color: black;
+  padding: 1rem;
+  grid-column: 1/-1;
+}
+
+.footer__nav {
+  width: 100%;
+  list-style: none;
+  padding: 0 0 0 5%;
+  margin: 0;
+
+  @include display-flex();
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__item {
+  padding: 0 1rem;
+
+  a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+  }
+
+  &:last-of-type {
+    padding-left: 40%;
+    // padding-left: 30rem;
+  }
+}
+
+//ICONS
+
+.facebook {
+  fill: #4267b2;
+  margin: 0 1rem 0 0;
+}
+
+.linkedin {
+  fill: #0e76a8;
+  margin: 0 1rem 0 0;
+}
+
+.instagram {
+  fill: white;
+  margin: 0 1rem 0 0;
+}
+
 /*MOBILE VIEW*/
 
 @media (max-width: 775px) {
@@ -294,7 +333,7 @@ footer {
 
   body {
     grid-template-columns: auto;
-    grid-template-rows: auto 2.5rem;
+    grid-template-rows: auto 4rem;
   }
 
   main {
@@ -309,30 +348,35 @@ footer {
     display: block;
     position: fixed;
     bottom: 5.5rem;
-    right: 1rem;
-    z-index: 1;
+    right: 2rem;
+    z-index: 2;
 
-    width: 10rem;
+    width: 12rem;
 
     background: white;
-    border: black solid 0.1rem;
+    border-bottom: black solid 0.5rem;
   }
 
   .extend-menu__links {
     display: flex;
     flex-direction: column;
-    text-decoration: none;
-    color: black;
+    justify-content: center;
+    margin: 1rem;
+    padding: 0;
   }
 
   .extend-menu__item {
     list-style: none;
-    margin: 0;
+    padding: 0.5rem 0;
   }
 
   .extend-menu__link {
     text-decoration: none;
     color: black;
+  }
+
+  .mobile__hidden {
+    display: none;
   }
 
   .nav__links {
@@ -391,6 +435,16 @@ footer {
     top: 90%;
     font-size: 2rem;
   }
+
+  .instagram {
+    fill: black;
+  }
+}
+
+//FOR JAVASCRIPT
+
+.hidden {
+  display: none;
 }
 
 @keyframes introduction {
