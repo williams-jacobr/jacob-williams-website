@@ -54,15 +54,18 @@ const controlCvView = function () {
 };
 
 const init = function () {
-  menuView.addHandlerClickExtendMenu(controlExtendMenu);
-  overlay.addEventListener("click", controlExtendMenu);
+  // MENU BUTTON CONTROL
   myPlacesButton.addEventListener("click", controlPlacesView);
   blogButton.addEventListener("click", controlBlogView);
-  blogPostView.addHandlerClick(controlBlogPostView);
-  blogPostView.addHandlerCloseClick(controlBlogView);
   aboutMeButton.addEventListener("click", controlAboutMeView);
   gitHubButton.addEventListener("click", controlGitHubView);
   cvButton.addEventListener("click", controlCvView);
+
+  //VIEW CONTROLS
+  menuView.addHandlerClickExtendMenu(controlExtendMenu);
+  overlay.addEventListener("click", controlExtendMenu);
+  blogPostView.addHandlerClick(controlBlogPostView);
+  blogPostView.addHandlerCloseClick(controlBlogView);
 };
 
 init();

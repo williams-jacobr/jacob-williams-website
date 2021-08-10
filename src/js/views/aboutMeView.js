@@ -1,4 +1,5 @@
 import View from "./view.js";
+import coding from "./../../../imgs/about me/coding.png";
 
 class AboutMeView extends View {
   _parentElement = document.querySelector("main");
@@ -53,7 +54,7 @@ class AboutMeView extends View {
 
     const HTML = `
     <div class="about-me">
-      <div>Coder</div>
+      <div><img src = ${coding}/>Coder</div>
       <div>Mathematician</div>
       <div>Challenge breaker (Pictures of me at the top of every section showing something exciting)</div>
     </div>
