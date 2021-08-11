@@ -1,6 +1,9 @@
 import image from "../../imgs/blog/blog_1/img_1.webp";
+import { AJAX } from "./helpers.js";
+import { GITHUB_REPO_URL, GITHUB_USER_URL } from "./config.js";
 
 export const state = {
+  github: {},
   blogs: {
     blog_1: {
       text: [
@@ -25,4 +28,22 @@ export const state = {
       images: "{image}",
     },
   },
+};
+
+export const loadGitHubUser = async function () {
+  try {
+    const data = await AJAX(GITHUB_USER_URL);
+    return data;
+  } catch (err) {
+    throw err;
+  }
+};
+
+export const loadGitHubRepos = async function () {
+  try {
+    const data = await AJAX(GITHUB_REPO_URL);
+    return data;
+  } catch (err) {
+    throw err;
+  }
 };

@@ -44,8 +44,22 @@ const controlAboutMeView = function () {
   checkOverlay();
 };
 
-const controlGitHubView = function () {
-  gitHubView.render();
+const controlGitHubView = async function () {
+  try {
+    const data = await model.loadGitHubRepos();
+    const userData = await model.loadGitHubUser();
+    console.log(userData);
+
+    //Send data to state
+    model.state.github.user = userData.login;
+    model.state.github.html = userData.html_url;
+    model.state.github.avatar = userData.avatar_url;
+    model.state.github.repos = data;
+
+    gitHubView.render(model.state.github);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 const controlCvView = function () {

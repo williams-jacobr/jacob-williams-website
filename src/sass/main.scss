@@ -171,14 +171,15 @@ main {
 .about-me {
   height: 100%;
   width: 100%;
+  // background-color: black;
   @include display-flex();
   justify-content: center;
 
   div {
-    margin: 1rem;
+    margin: 0.5rem;
     padding: 2rem;
     border: black 0.5rem solid;
-    width: 30%;
+    width: 33%;
     @include display-flex();
     flex-direction: column;
     align-items: center;
@@ -196,7 +197,7 @@ main {
 
     div {
       width: auto;
-      height: 30%;
+      height: 33%;
       flex-direction: row;
 
       img {
@@ -534,6 +535,8 @@ footer {
     transform: translateY(3rem);
   }
 }
+
+@import "github";
 
 /* OLD CODE FROM V1*/
 
