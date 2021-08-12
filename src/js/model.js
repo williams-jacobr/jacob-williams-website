@@ -1,9 +1,13 @@
 import image from "../../imgs/blog/blog_1/img_1.webp";
+import cvProfilePicture from "../../imgs/cv/profile.png";
 import { AJAX } from "./helpers.js";
 import { GITHUB_REPO_URL, GITHUB_USER_URL } from "./config.js";
 
 export const state = {
   github: {},
+  cv: {
+    profilePicture: cvProfilePicture,
+  },
   blogs: {
     blog_1: {
       text: [
@@ -30,7 +34,7 @@ export const state = {
   },
 };
 
-export const loadGitHubUser = async function () {
+const loadGitHubUser = async function () {
   try {
     const data = await AJAX(GITHUB_USER_URL);
     return data;
@@ -39,10 +43,27 @@ export const loadGitHubUser = async function () {
   }
 };
 
-export const loadGitHubRepos = async function () {
+const loadGitHubRepos = async function () {
   try {
     const data = await AJAX(GITHUB_REPO_URL);
     return data;
+  } catch (err) {
+    throw err;
+  }
+};
+
+export const loadGitHub = async function () {
+  try {
+    const repoData = await loadGitHubRepos();
+    const userData = await loadGitHubUser();
+
+    //Send data to state
+    state.github.user = userData.login;
+    state.github.html = userData.html_url;
+    state.github.name = userData.name;
+    state.github.location = userData.location;
+    state.github.avatar = userData.avatar_url;
+    state.github.repos = repoData;
   } catch (err) {
     throw err;
   }

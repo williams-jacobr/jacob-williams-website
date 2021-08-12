@@ -2,34 +2,127 @@
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-rows: 1fr 3fr;
+  grid-template-rows: 40% 60%;
 }
 
 .github__header {
   display: grid;
-  grid-template-rows: 1fr 5fr;
-  padding: 1rem;
+  // grid-template-rows: 1fr 5fr;
+  grid-gap: 0.5rem 0;
+
   div:first-of-type {
+    @include display-flex();
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0.25rem 1.5rem;
     background-color: black;
 
     .github-icon {
       fill: white;
+      width: 56px;
+      height: 56px;
+    }
+
+    a:last-of-type {
+      color: white;
+      text-decoration: none;
+      font-size: 2rem;
     }
   }
-  img {
-    border-radius: 50%;
-    height: 20rem;
+  div:last-of-type {
+    padding: 0.5rem;
+    display: grid;
+    grid-template-columns: 33% 66%;
+    grid-template-rows: 50% auto auto;
+    align-items: center;
+
+    img {
+      grid-row: 1/-1;
+      border-radius: 50%;
+      height: 16rem;
+    }
+
+    p {
+      margin: 0;
+      padding: 0;
+    }
+
+    .github__header--name {
+      font-size: 2.5rem;
+      font-weight: bold;
+      grid-row: 2/3;
+    }
+    .github__header--location {
+      font-size: 1.5rem;
+      grid-row: 3/-1;
+
+      .geo-location-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-right: 0.75rem;
+      }
+    }
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 
 .github__items {
-  @include display-flex();
-  justify-content: space-around;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
   align-items: center;
   height: 100%;
   width: 100%;
 }
 
-.githib__item {
-  border: black solid 1px;
+.github__item {
+  height: 100%;
+  padding: 1.5rem;
+  border: #e1e4e8 solid 1px;
+  border-radius: 6px;
+  color: #586069;
+
+  .bookmark-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 1rem;
+  }
+
+  a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: rgb(3, 102, 214);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .github__container {
+    display: grid;
+    grid-template-rows: auto auto;
+    align-content: stretch;
+    overflow: auto;
+  }
+
+  .github__header {
+    div:last-of-type {
+      grid-template-columns: 50% 50%;
+
+      img {
+        height: 12rem;
+      }
+    }
+  }
+
+  .github__items {
+    grid-template-columns: 100%;
+  }
 }

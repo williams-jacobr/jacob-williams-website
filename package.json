@@ -14,5 +14,6 @@
     "@parcel/transformer-sass": "^2.0.0-nightly.792",
     "parcel": "^2.0.0-nightly.790",
     "sass": "^1.37.5"
-  }
+  },
+  "dependencies": {}
 }

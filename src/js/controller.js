@@ -46,24 +46,22 @@ const controlAboutMeView = function () {
 
 const controlGitHubView = async function () {
   try {
-    const data = await model.loadGitHubRepos();
-    const userData = await model.loadGitHubUser();
-    console.log(userData);
+    const controlGitHubHeader = function () {
+      window.open(model.state.github.html, "");
+    };
 
-    //Send data to state
-    model.state.github.user = userData.login;
-    model.state.github.html = userData.html_url;
-    model.state.github.avatar = userData.avatar_url;
-    model.state.github.repos = data;
+    await model.loadGitHub();
 
     gitHubView.render(model.state.github);
+
+    gitHubView.addHandlerClickHeader(controlGitHubHeader);
   } catch (err) {
     console.log(err);
   }
 };
 
 const controlCvView = function () {
-  cvView.render();
+  cvView.render(model.state.cv);
   checkOverlay();
 };
 

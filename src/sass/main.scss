@@ -93,16 +93,11 @@ nav {
 }
 
 main {
-  margin: 0.5rem;
+  padding: 0;
   border: 0.25rem black solid;
   border-radius: 0.45rem;
   height: 95%;
-  max-height: 90vh;
   overflow: hidden;
-
-  @include display-flex();
-  justify-content: center;
-  align-items: center;
 }
 
 /* GENERAL ELEMENTS */
@@ -537,6 +532,7 @@ footer {
 }
 
 @import "github";
+@import "cv";
 
 /* OLD CODE FROM V1*/
 
