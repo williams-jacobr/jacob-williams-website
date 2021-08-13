@@ -16,9 +16,7 @@ class gitHubView extends View {
 
   _generateMarkup() {
     // return "coming soon";
-    console.log(this._data);
     const data = this._data.repos.map((el) => el.name);
-    console.log(data);
     return `
     <div class="github__container">
     <div class="github__header">

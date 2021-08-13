@@ -9,14 +9,17 @@ import cvView from "./views/cvView.js";
 
 const extendedMenu = document.querySelector(".extend-menu");
 const overlay = document.querySelector(".overlay");
-const myPlacesButton = document.querySelector(`[href="#myplaces"]`);
-const blogButton = document.querySelector(`[href="#blog"]`);
-const aboutMeButton = document.querySelector(`[href="#aboutme"]`);
-const gitHubButton = document.querySelector(`[href="#github"]`);
-const cvButton = document.querySelector(`[href="#cv"]`);
 
-const checkOverlay = function () {
-  if (menuView.menuExtended) controlExtendMenu();
+const controlView = function () {
+  // Get hash from window location
+  const id = window.location.hash.slice(1);
+
+  // Choose correct view using the view map
+  const view =
+    model.state.viewMap[model.state.viewMap.map((el) => el.id).indexOf(id)];
+
+  // call the correct controller
+  view.control.call();
 };
 
 const controlExtendMenu = function () {
@@ -25,12 +28,17 @@ const controlExtendMenu = function () {
   menuView.menuExtended = !menuView.menuExtended;
 };
 
+const checkOverlay = function () {
+  if (menuView.menuExtended) controlExtendMenu();
+};
+
 const controlPlacesView = function () {
   myPlacesView.render();
+  checkOverlay();
 };
 
 const controlBlogView = function () {
-  blogView.render(model.state.blogs);
+  blogView.render(model.state.blog);
   checkOverlay();
 };
 
@@ -50,6 +58,7 @@ const controlGitHubView = async function () {
       window.open(model.state.github.html, "");
     };
 
+    checkOverlay();
     await model.loadGitHub();
 
     gitHubView.render(model.state.github);
@@ -66,12 +75,30 @@ const controlCvView = function () {
 };
 
 const init = function () {
-  // MENU BUTTON CONTROL
-  myPlacesButton.addEventListener("click", controlPlacesView);
-  blogButton.addEventListener("click", controlBlogView);
-  aboutMeButton.addEventListener("click", controlAboutMeView);
-  gitHubButton.addEventListener("click", controlGitHubView);
-  cvButton.addEventListener("click", controlCvView);
+  //Populate view map to link hash to correct controller
+  model.state.viewMap.push({
+    id: "cv",
+    control: controlCvView,
+  });
+  model.state.viewMap.push({
+    id: "myplaces",
+    control: controlPlacesView,
+  });
+  model.state.viewMap.push({
+    id: "blog",
+    control: controlBlogView,
+  });
+  model.state.viewMap.push({
+    id: "aboutme",
+    control: controlAboutMeView,
+  });
+  model.state.viewMap.push({
+    id: "github",
+    control: controlGitHubView,
+  });
+
+  //Initialising hash listener
+  menuView.addHandlerRender(controlView);
 
   //VIEW CONTROLS
   menuView.addHandlerClickExtendMenu(controlExtendMenu);
@@ -81,4 +108,3 @@ const init = function () {
 };
 
 init();
-aboutMeView.render();

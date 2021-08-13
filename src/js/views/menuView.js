@@ -11,6 +11,11 @@ EXTEND MENU
 
 
 */
+  addHandlerRender(handler) {
+    ["hashchange", "load"].forEach((ev) =>
+      window.addEventListener(ev, handler)
+    );
+  }
 
   addHandlerClickExtendMenu(handler) {
     this._parentElement.addEventListener("click", function (e) {

@@ -4,11 +4,14 @@ import { AJAX } from "./helpers.js";
 import { GITHUB_REPO_URL, GITHUB_USER_URL } from "./config.js";
 
 export const state = {
+  viewMap: [],
   github: {},
   cv: {
     profilePicture: cvProfilePicture,
   },
-  blogs: {
+  myplaces: {},
+  aboutme: {},
+  blog: {
     blog_1: {
       text: [
         `Lviv? Lvov? Lwow? Which is it, and why does it have so many names?`,
