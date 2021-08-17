@@ -14,9 +14,20 @@ const controlView = function () {
   // Get hash from window location
   const id = window.location.hash.slice(1);
 
+  if (id === "contactme") {
+    window.location.href = "mailto:williams.jacobr@gmail.com";
+    window.location.href = window.location.origin;
+    return;
+  }
+
   // Choose correct view using the view map
-  const view =
-    model.state.viewMap[model.state.viewMap.map((el) => el.id).indexOf(id)];
+  const view = model.state.viewMap[
+    model.state.viewMap.map((el) => el.id).indexOf(id)
+  ]
+    ? model.state.viewMap[model.state.viewMap.map((el) => el.id).indexOf(id)]
+    : model.state.viewMap[
+        model.state.viewMap.map((el) => el.id).indexOf("aboutme")
+      ];
 
   // call the correct controller
   view.control.call();
@@ -33,8 +44,17 @@ const checkOverlay = function () {
 };
 
 const controlPlacesView = function () {
-  myPlacesView.render();
   checkOverlay();
+  myPlacesView.render();
+
+  const map = L.map("map").setView([0, 0], 2.5);
+  const myIcon = model.state.myplaces.map.icon;
+
+  myPlacesView.renderMap(map);
+
+  model.state.myplaces.places.forEach((place) =>
+    myPlacesView.addMarker(place.latLng, myIcon, place.description)
+  );
 };
 
 const controlBlogView = function () {

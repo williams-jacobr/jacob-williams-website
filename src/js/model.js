@@ -1,7 +1,12 @@
 import image from "../../imgs/blog/blog_1/img_1.webp";
 import cvProfilePicture from "../../imgs/cv/profile.png";
+import mapIcon from "../../node_modules/leaflet/dist/images/marker-icon.png";
+import mapIconRetina from "../../node_modules/leaflet/dist/images/marker-icon-2x.png";
+import mapIconShadow from "../../node_modules/leaflet/dist/images/marker-shadow.png";
 import { AJAX } from "./helpers.js";
 import { GITHUB_REPO_URL, GITHUB_USER_URL } from "./config.js";
+
+import L from "leaflet";
 
 export const state = {
   viewMap: [],
@@ -9,7 +14,46 @@ export const state = {
   cv: {
     profilePicture: cvProfilePicture,
   },
-  myplaces: {},
+  myplaces: {
+    map: {
+      icon: L.icon({
+        iconUrl: mapIcon,
+        iconRetinaUrl: mapIconRetina,
+        shadowUrl: mapIconShadow,
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        tooltipAnchor: [16, -28],
+        shadowSize: [41, 41],
+      }),
+    },
+
+    places: [
+      { latLng: [50.46535, 30.497804], description: "Kyiv, Ukraine" },
+      {
+        latLng: [-28.371979, 32.412138],
+        description: "St. Lucia, South Africa",
+      },
+      {
+        latLng: [-33.96234, 18.410649],
+        description: "Table Mountain, Cape Town, South Africa",
+      },
+      {
+        latLng: [12.284715, -82.974726],
+        description: "Little Corn, Nicaragua",
+      },
+      { latLng: [13.51031, -86.09602], description: "Cerro Blanco, Nicaragua" },
+      { latLng: [11.973831, -86.105134], description: "Masaya, Nicaragua" },
+      {
+        latLng: [53.41005, -2.237575],
+        description: "Didsbury, Manchester, UK",
+      },
+      {
+        latLng: [50.909949, -4.563338],
+        description: "Morwenstow, Cornwall, UK",
+      },
+    ],
+  },
   aboutme: {},
   blog: {
     blog_1: {

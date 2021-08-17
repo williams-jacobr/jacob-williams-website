@@ -15,5 +15,7 @@
     "parcel": "^2.0.0-nightly.790",
     "sass": "^1.37.5"
   },
-  "dependencies": {}
+  "dependencies": {
+    "leaflet": "^1.7.1"
+  }
 }
