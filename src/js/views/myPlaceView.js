@@ -16,16 +16,30 @@ class myPlacesView extends View {
     }).addTo(this._map);
   }
 
-  addMarker(latlng, icon, message) {
-    L.marker(latlng, { icon: icon })
+  addMarker(id, icon) {
+    const index = this._data.places.map((place) => place.id).indexOf(id);
+    const place = this._data.places[index];
+    this._data.places[index].marker = L.marker(place.latLng, { icon: icon })
       .addTo(this._map)
-      .bindPopup(message)
-      .openPopup();
+      .bindPopup(place.description);
+  }
+
+  goTo(id) {
+    const index = this._data.places.map((place) => place.id).indexOf(id);
+    const place = this._data.places[index];
+    this._data.places[index].marker.openPopup();
+    this._map.setView(place.latLng, 5, {
+      animate: true,
+      pan: { duration: 2 },
+    });
   }
 
   _generateMarkup() {
     return `
-    <div id="map"></div>
+    <div class = "my-places__container">
+      <div class="sidebar"></div>
+      <div id="map"></div>
+    </div>
       `;
   }
 }

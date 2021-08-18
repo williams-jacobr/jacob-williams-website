@@ -1,11 +1,13 @@
 import * as model from "./model.js";
 import menuView from "./views/menuView.js";
 import myPlacesView from "./views/myPlaceView.js";
+import myPlacesMenuView from "./views/myPlacesMenuView.js";
 import blogView from "./views/blogView.js";
 import blogPostView from "./views/blogPostView.js";
 import aboutMeView from "./views/aboutMeView.js";
 import gitHubView from "./views/gitHubView.js";
 import cvView from "./views/cvView.js";
+import { latLng } from "leaflet";
 
 const extendedMenu = document.querySelector(".extend-menu");
 const overlay = document.querySelector(".overlay");
@@ -14,6 +16,7 @@ const controlView = function () {
   // Get hash from window location
   const id = window.location.hash.slice(1);
 
+  //Temporary contact me solution
   if (id === "contactme") {
     window.location.href = "mailto:williams.jacobr@gmail.com";
     window.location.href = window.location.origin;
@@ -44,8 +47,24 @@ const checkOverlay = function () {
 };
 
 const controlPlacesView = function () {
+  const controlExtendPlacesMenu = function (el) {
+    el.classList.toggle("sidebar--extended");
+    const extendArrow = el.querySelector(".my-places__menu--extend");
+    extendArrow.classList.toggle("my-places__menu--close");
+    extendArrow.focus();
+  };
+
+  const controlPlacesMenuView = function (el) {
+    const id = el.dataset.id;
+    const marker =
+      model.state.myplaces.places[
+        model.state.myplaces.places.map((place) => place.id).indexOf(id)
+      ];
+    myPlacesView.goTo(marker.id);
+  };
+
   checkOverlay();
-  myPlacesView.render();
+  myPlacesView.render(model.state.myplaces);
 
   const map = L.map("map").setView([0, 0], 2.5);
   const myIcon = model.state.myplaces.map.icon;
@@ -53,8 +72,13 @@ const controlPlacesView = function () {
   myPlacesView.renderMap(map);
 
   model.state.myplaces.places.forEach((place) =>
-    myPlacesView.addMarker(place.latLng, myIcon, place.description)
+    myPlacesView.addMarker(place.id, myIcon)
   );
+
+  myPlacesMenuView.renderMenu(model.state.myplaces.places);
+
+  myPlacesMenuView.addHandlerClickExtend(controlExtendPlacesMenu);
+  myPlacesMenuView.addHandlerClick(controlPlacesMenuView);
 };
 
 const controlBlogView = function () {

@@ -81,6 +81,22 @@ export const state = {
   },
 };
 
+const setPlaceId = function (place) {
+  const desc = place.description.slice(0, 3);
+  const num = place.latLng
+    .join("")
+    .replace(".", "")
+    .replace(".", "")
+    .replace("-", "")
+    .replace("-", "");
+  return desc + num;
+};
+
+const setPlacesIds = function () {
+  state.myplaces.places.forEach((place) => (place.id = setPlaceId(place)));
+};
+setPlacesIds();
+
 const loadGitHubUser = async function () {
   try {
     const data = await AJAX(GITHUB_USER_URL);
