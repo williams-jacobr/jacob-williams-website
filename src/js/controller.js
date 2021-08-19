@@ -48,10 +48,9 @@ const checkOverlay = function () {
 
 const controlPlacesView = function () {
   const controlExtendPlacesMenu = function (el) {
-    el.classList.toggle("sidebar--extended");
-    const extendArrow = el.querySelector(".my-places__menu--extend");
-    extendArrow.classList.toggle("my-places__menu--close");
-    extendArrow.focus();
+    el.parentElement.classList.toggle("sidebar--extended");
+    el.classList.toggle("my-places__menu--close");
+    // extendArrow.focus();
   };
 
   const controlPlacesMenuView = function (el) {
@@ -92,8 +91,14 @@ const controlBlogPostView = function () {
 };
 
 const controlAboutMeView = function () {
+  const controlScroll = function (el) {
+    const pos = el.offsetTop;
+    aboutMeView.scroll(pos);
+  };
   aboutMeView.render();
   checkOverlay();
+
+  aboutMeView.addHandlerToBottomClick(controlScroll);
 };
 
 const controlGitHubView = async function () {

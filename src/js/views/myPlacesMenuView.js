@@ -20,18 +20,18 @@ class MyPlacesMenuView extends View {
   }
 
   addHandlerClickExtend(handler) {
-    this._parentElement.addEventListener(
-      "click",
-      function () {
-        handler(this._parentElement);
-      }.bind(this)
-    );
+    this._parentElement.addEventListener("click", function (e) {
+      const el = e.target.closest(".my-places__menu--extend");
+      if (!el) return;
+
+      handler(el);
+    });
   }
 
   _generateMarkup() {
     return `
-    <div class = "my-places__menu--container">
     <div class = "my-places__menu--extend">${CHEVRON_UP_ICON}</div>
+    <div class = "my-places__menu--container">
     ${this._data
       .map(
         (place) => `

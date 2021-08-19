@@ -1,0 +1,94 @@
+.about-me {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  scroll-behavior: smooth;
+}
+
+.about-me__welcome {
+  background: linear-gradient(transparent, black 90%),
+    no-repeat center url(/header.jpg), black;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem 1rem;
+  align-items: end;
+
+  h1 {
+    color: white;
+    font-size: 4rem;
+    margin: 1rem 2rem;
+
+    animation: introduction 1s ease-out;
+  }
+
+  .find-out-more {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0;
+    width: 50%;
+    transform: translateY(3rem);
+    &:hover {
+      transform: translateY(1rem);
+      transition: ease-in 0.2s;
+      cursor: pointer;
+    }
+  }
+
+  p {
+    margin: 0;
+  }
+
+  p.find-out-more__btn {
+    color: white;
+    font-size: 10rem;
+    opacity: 0;
+    transform: rotateX(70deg);
+
+    animation: point-down 2s ease-out 3s 2 forwards;
+  }
+
+  p.find-out-more__text {
+    color: white;
+    font-size: 3rem;
+    transform: translateY(3rem);
+    text-align: center;
+    line-height: 2.5rem;
+    opacity: 0;
+    animation: attract 1s ease-out 4 forwards;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  @media (max-width: 775px) {
+    h1 {
+      top: 90%;
+      font-size: 2rem;
+    }
+  }
+}
+
+.about-me__more {
+  //   height: 100%;
+  width: 100%;
+  // background-color: black;
+  @include display-flex();
+  flex-direction: column;
+
+  div {
+    @include display-flex();
+    flex-direction: column;
+
+    img {
+      object-fit: cover;
+      max-width: 100%;
+      height: 500px;
+    }
+  }
+}
