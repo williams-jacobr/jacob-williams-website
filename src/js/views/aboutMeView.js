@@ -42,13 +42,31 @@ class AboutMeView extends View {
       <div class="about-me__more">  
         <div>
           <img src = ${coding}/>
-          <p>Coder</p>
+          <div class="image-overlay">
+            <div>
+              <p class="image-overlay--title">Coder</p>
+            </div>
+            <p class="image-overlay--text">(Pictures of me at the top of every section showing something exciting)</p> 
+          </div>
         </div>
         <div>
-          <p>Mathematician</p>
+          <img class="image-even image-matlab" src = "https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png" crossorigin/>
+          <div class="image-overlay image-overlay--even">
+            <div class="image-even--text">
+              <p class="image-overlay--title">Mathematician</p>
+            </div>
+            <p class="image-overlay--text">(Pictures of me at the top of every section showing something exciting)</p> 
+          </div>
         </div>
         <div>
-          <p>Challenge breaker (Pictures of me at the top of every section showing something exciting) </p>
+          <img src = ${coding}/>
+          <div class="image-overlay">
+            <div>
+              <p class="image-overlay--title"> Challenge breaker  
+              </p>
+            </div> 
+            <p class="image-overlay--text">(Pictures of me at the top of every section showing something exciting)</p> 
+          </div>
         </div>
       </div>
     </div>
@@ -64,6 +82,35 @@ class AboutMeView extends View {
       <p class="find-out-more__text">Find out more</p>`
       );
     });
+  }
+
+  addScrollDownAnimation() {
+    const section = this._parentElement.querySelector(".about-me__welcome");
+    console.log(section);
+
+    const sectionObserver = new IntersectionObserver(this._hideSection, {
+      root: this._parentElement,
+      threshold: 0.35,
+    });
+
+    sectionObserver.observe(section);
+    // section.classList.remove("disappear-up");
+  }
+
+  _hideSection(entries, observer) {
+    const [entry] = entries;
+    if (entry.isIntersecting) {
+      entry.target.classList.remove("disappear-up");
+      return;
+    }
+    entry.target.classList.add("disappear-up");
+
+    // if (entry.intersectionRatio > 0.5) {
+    //   console.log("INTERSECT");
+    //   entry.target.classList.remove("disappear-up");
+    //   return;
+    // }
+    // observer.unobserve(entry.target);
   }
 }
 

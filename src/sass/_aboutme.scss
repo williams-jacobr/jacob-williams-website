@@ -1,8 +1,11 @@
 .about-me {
   height: 100%;
   width: 100%;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   scroll-behavior: smooth;
+  background-color: black;
+  color: white;
 }
 
 .about-me__welcome {
@@ -15,6 +18,8 @@
   grid-template-columns: 2fr 1fr;
   gap: 1rem 1rem;
   align-items: end;
+
+  transition: 0.3s ease-in-out;
 
   h1 {
     color: white;
@@ -75,20 +80,109 @@
 }
 
 .about-me__more {
-  //   height: 100%;
   width: 100%;
-  // background-color: black;
+
   @include display-flex();
   flex-direction: column;
 
-  div {
+  > div {
     @include display-flex();
     flex-direction: column;
+    position: relative;
+    margin: 5rem 0;
 
     img {
       object-fit: cover;
-      max-width: 100%;
+      max-width: 80%;
       height: 500px;
     }
+
+    .image-matlab {
+      object-fit: contain;
+    }
+
+    .image-even {
+      position: relative;
+      left: 20%;
+    }
+
+    .image-overlay {
+      @include display-flex();
+
+      width: 200%;
+      height: 500px;
+      position: absolute;
+      z-index: 1;
+      transition: ease-in-out 0.5s;
+
+      background: linear-gradient(
+        black 1%,
+        rgba(0, 0, 0, 0.5) 5%,
+        transparent,
+        rgba(0, 0, 0, 0.5) 95%,
+        black 99%
+      );
+
+      div {
+        position: relative;
+        @include display-flex();
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        padding: 1rem;
+
+        .image-overlay--title {
+          padding: 0;
+          margin: 0;
+          display: inline-block;
+
+          transform-origin: center;
+          transform: rotate(90deg) translateY(-200px);
+
+          width: 450px;
+          text-align: center;
+
+          font-size: 3rem;
+        }
+      }
+
+      .image-even--text {
+        justify-content: flex-start;
+        order: 1;
+        > .image-overlay--title {
+          transform: rotate(270deg) translateY(-200px);
+          transform-origin: center;
+        }
+      }
+
+      .image-overlay--text {
+        width: 100%;
+        padding: 2rem 5rem;
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+    }
+
+    .image-overlay:hover {
+      transform: translateX(-45%);
+      transition: ease-in-out 1s;
+    }
+
+    .image-overlay--even {
+      transform: translateX(-50%);
+      .image-overlay--text {
+        padding-left: 10rem;
+      }
+    }
+
+    .image-overlay--even:hover {
+      transform: translateX(-5%);
+    }
   }
+}
+
+//JS
+
+.disappear-up {
+  opacity: 0;
+  transform: translateY(-10%);
 }

@@ -99,6 +99,7 @@ const controlAboutMeView = function () {
   checkOverlay();
 
   aboutMeView.addHandlerToBottomClick(controlScroll);
+  aboutMeView.addScrollDownAnimation();
 };
 
 const controlGitHubView = async function () {
