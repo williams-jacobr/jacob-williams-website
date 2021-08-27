@@ -94,10 +94,28 @@ nav {
 
 main {
   padding: 0;
+  margin: 0;
   border: 0.25rem black solid;
   border-radius: 0.45rem;
   height: 95%;
   overflow: hidden;
+
+  scrollbar-color: grey;
+  scrollbar-width: 10px;
+
+  // ::-webkit-scrollbar {
+  //   width: 10px; /* width of the entire scrollbar */
+  // }
+
+  // ::-webkit-scrollbar-track {
+  //   background: grey; /* color of the tracking area */
+  // }
+
+  // ::-webkit-scrollbar-thumb {
+  //   background-color: white; /* color of the scroll thumb */
+  //   border-radius: 20px; /* roundness of the scroll thumb */
+  //   border: 3px solid white; /* creates padding around scroll thumb */
+  // }
 }
 
 /* GENERAL ELEMENTS */

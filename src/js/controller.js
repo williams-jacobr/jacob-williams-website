@@ -1,3 +1,6 @@
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+
 import * as model from "./model.js";
 import menuView from "./views/menuView.js";
 import myPlacesView from "./views/myPlaceView.js";
@@ -7,12 +10,12 @@ import blogPostView from "./views/blogPostView.js";
 import aboutMeView from "./views/aboutMeView.js";
 import gitHubView from "./views/gitHubView.js";
 import cvView from "./views/cvView.js";
-import { latLng } from "leaflet";
 
 const extendedMenu = document.querySelector(".extend-menu");
 const overlay = document.querySelector(".overlay");
 
 const controlView = function () {
+  console.log("CLICK");
   // Get hash from window location
   const id = window.location.hash.slice(1);
 

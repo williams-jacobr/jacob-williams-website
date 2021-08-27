@@ -12,6 +12,7 @@ EXTEND MENU
 
 */
   addHandlerRender(handler) {
+    console.log("HELLO");
     ["hashchange", "load"].forEach((ev) =>
       window.addEventListener(ev, handler)
     );
